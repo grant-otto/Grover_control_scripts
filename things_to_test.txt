@@ -1,0 +1,6 @@
+download mission
+reading in an rc switch changed on the controller
+reading in the button input on the controller
+pausing the mission
+simple_goto waypoint
+
