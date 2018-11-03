@@ -6,6 +6,28 @@ vehicle = connect('/dev/ttyS0', wait_ready=True, baud=921600)
 print("Hello, my name is Grover. The current firmware version is: ")
 print vehicle.version
 
+
+
+
+
+
+
+
+
+
+
+def take_image():
+	'''
+	controls the stepper motor going down, the image being taken,
+	and the stepper coming back up
+	"""
+	
+
+
+
+
+
+
 def distance_to_current_waypoint():
     """
     Gets distance in metres to the current waypoint. 
