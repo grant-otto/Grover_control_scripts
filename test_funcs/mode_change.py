@@ -22,3 +22,5 @@ print("Hello, my name is Grover. The current firmware version is: ")
 print vehicle.version
 
 
+vehicle.mode=VehicleMode('HOLD')
+vehicle.mode=VehicleMode('AUTO')
