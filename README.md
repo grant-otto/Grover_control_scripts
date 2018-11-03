@@ -10,4 +10,5 @@ Useful Links for Dronekit:
 http://python.dronekit.io/about/index.html (intro)
 http://python.dronekit.io/examples/mission_basic.html (mission planning and modification)
 http://python.dronekit.io/automodule.html (API full reference)
+http://python.dronekit.io/examples/mission_import_export.html (mission download and upload)
 
