@@ -1,0 +1,35 @@
+#high level "whiteboard code" to brainstorm for Grover
+
+from dronekit import *
+import raspi gpio
+import all the stuf for image capture
+
+
+connect to rover
+
+
+while True
+	if flight mode = AUTO
+		if dist to next waypoint <tolerance
+			flight mode = HOLD
+			time.sleep(1000) # let the rover stop
+			take_image()
+			flight mode= AUTO
+			time.sleep() #delay time to ensure that the next waypoint is selected and the mechanism won't take a pic over and over again
+			
+		
+	if flight mode = MANUAL
+		if rc.channel('6') > number
+			flight mode = HOLD
+			take_image()
+			flight mode = MANUAL
+
+def take image()
+	while switch = LOW
+		lower stepper
+	stop stepper
+	retrieve gps point
+	take usb image
+	modify exif tag to include gps point
+	save to directory
+	raise stepper #may need a switch for the top of the stepper
