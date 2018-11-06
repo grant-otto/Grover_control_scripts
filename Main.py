@@ -1,4 +1,5 @@
-import numpy as np
+#! /usr/bin/python3
+
 import cv2
 import os
 import pyexiv2
@@ -31,13 +32,13 @@ def main():
         metadata[key] = pyexiv2.ExifTag(key, value) #writes the key and value to the exif tag
         #%m_%d_%Y - month_day_year
         #%n - image number
-        filename = "GrainImage_" + % datetime.datetime.now().strftime("%m_%d_%Y %H:%M:%S") + ".jpg" %n
-        path = '/home/pi/GrainSizeImages'
+        filename = "GrainImage_" + datetime.datetime.now().strftime("%m_%d_%Y %H:%M:%S") + ".jpg" %n
+        path = '/home/grant/GrainSizeImages'
         cv2.imwrite(os.path.join(path, filename), frame)
         #cv2.imwrite("GrainImage.jpg", frame) #writes the frame to an image file
         n+=1
         
     cap.release() #relases the camera function
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
