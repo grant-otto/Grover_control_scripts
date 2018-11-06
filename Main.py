@@ -3,11 +3,14 @@
 import cv2
 import os
 import pyexiv2
+#from datetime import *
+import datetime
 from datetime import date
 from datetime import time
 from datetime import datetime
 from datetime import tzinfo
 from dronekit import connect, VehicleMode
+
 
 def main():
     cap = cv2.VideoCapture(0) 							#zero is first webcam attatched
@@ -26,11 +29,11 @@ def main():
         pyexiv2 is a module that allows your python scripts to read and write data
             embedded in image files
 	'''
-        metadata = pyexiv2.ImageMetadata(frame) 				#calls for the metadata off of the image
-        metadata.read() 							#reads the metadata
+        #metadata = pyexiv2.ImageMetadata(frame) 				#calls for the metadata off of the image
+        #metadata.read() 							#reads the metadata
         key = 'Exif.Image.GPSTag' 						#reference for saving the gps data in the exif tag
-        value = dronekit.LocationGlobal 					#takes the gps data from dronekit
-        metadata[key] = pyexiv2.ExifTag(key, value) 				#writes the key and value to the exif tag
+        #value = dronekit.LocationGlobal 					#takes the gps data from dronekit
+        #metadata[key] = pyexiv2.ExifTag(key, value) 				#writes the key and value to the exif tag
         #%m_%d_%Y - month_day_year
         #%n - image number
         filename = "GrainImage_" + datetime.datetime.now().strftime("%m_%d_%Y %H:%M:%S") + ".jpg" %n
