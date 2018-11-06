@@ -4,13 +4,13 @@ import cv2
 import os
 import pyexiv2
 #from datetime import *
-import datetime
+#import datetime
 from datetime import date
 from datetime import time
 from datetime import datetime
 from datetime import tzinfo
 from dronekit import connect, VehicleMode
-datetime.datetime.now().strftime("%m_%d_%Y %H:%M:%S")
+datetime.now().strftime("%m_%d_%Y %H:%M:%S")
 
 
 def main():
@@ -37,7 +37,7 @@ def main():
         #metadata[key] = pyexiv2.ExifTag(key, value) 				#writes the key and value to the exif tag
         #%m_%d_%Y - month_day_year
         #%n - image number
-        filename = "GrainImage_" + datetime.datetime.now().strftime("%m_%d_%Y %H:%M:%S") + ".jpg" %n
+        filename = "GrainImage_" + str(datetime.now())    #.strftime("%m_%d_%Y %H:%M:%S") + ".jpg" %n
         path = '/home/grant/GrainSizeImages'
         cv2.imwrite(os.path.join(path, filename), frame)
         #cv2.imwrite(filename, frame) #writes the frame to an image file
