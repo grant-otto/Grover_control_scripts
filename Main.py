@@ -34,8 +34,8 @@ def main():
         #%n - image number
         filename = "GrainImage_" + datetime.datetime.now().strftime("%m_%d_%Y %H:%M:%S") + ".jpg" %n
         path = '/home/grant/GrainSizeImages'
-        cv2.imwrite(os.path.join(path, filename), frame)
-        #cv2.imwrite("GrainImage.jpg", frame) #writes the frame to an image file
+        #cv2.imwrite(os.path.join(path, filename), frame)
+        cv2.imwrite(filename, frame) #writes the frame to an image file
         n+=1
         
     cap.release() #relases the camera function
