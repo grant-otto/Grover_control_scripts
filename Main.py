@@ -10,6 +10,7 @@ from datetime import time
 from datetime import datetime
 from datetime import tzinfo
 from dronekit import connect, VehicleMode
+datetime.datetime.now().strftime("%m_%d_%Y %H:%M:%S")
 
 
 def main():
