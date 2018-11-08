@@ -10,6 +10,8 @@ sudo apt-get install libexiv2-dev
 sudo apt-get install libboost-python-dev
 pip3 install py3exiv2
 
-dronekit: see 3DR website for quick installation instructions
+dronekit: 
+	sudo pip install dronekit
+
 	BAUD RATE IS SET TO 921600 on Mission Planner so it must always
 	be se to this for any connection made
