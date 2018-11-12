@@ -1,24 +1,21 @@
 #! /usr/bin/python3
 
+import numpy as np
 import cv2
 import os
-import pyexiv2
+#import pyexiv2
 import datetime
-from datetime import date
-#from datetime import time
-from datetime import datetime
-from datetime import tzinfo
-from dronekit import connect, VehicleMode
-datetime.now().strftime("%m_%d_%Y %H:%M:%S")
+#from dronekit import connect, VehicleMode
+#datetime.now().strftime("%m_%d_%Y %H:%M:%S")
 
 
 def main():
     cap = cv2.VideoCapture(0) 							#zero is first webcam attatched
     n = 0
-    now = datetime.now()
     
     if cap.isOpened(): 								#checks if webcam is up and running
         ret, frame = cap.read() 						#capture single frame from the webcam to read
+        #cv2.imshow('frame',frame)
     else:
         ret = False
 
@@ -35,11 +32,12 @@ def main():
         #value = dronekit.LocationGlobal 					#takes the gps data from dronekit
         #metadata[key] = pyexiv2.ExifTag(key, value) 				#writes the key and value to the exif tag
         #%m_%d_%Y - month_day_year
-        #%n - image number
-        filename = "GrainImage_" + datetime.datetime.now().strftime("%m_%d_%Y %H:%M:%S") #+ ".jpg" %n
-        path = '/home/grant/GrainSizeImages'
-        cv2.imwrite(os.path.join(path, filename), frame)
-        #cv2.imwrite(filename, frame) #writes the frame to an image file
+        #filename = "GrainImage_.png" #+ str(now) + ".png"
+        filename = 'GrainImage_%s.png'%datetime.datetime.utcnow().strftime('%Y-%m-%d-%H-%M-%S') #writes filename with UTC date & time
+        #path = 'C:/Users/Courtney/Documents/Github/Grover_control_scripts'
+        #cv2.imwrite(os.path.join(path, filename), frame)
+        #print(filename) #sanity check to make sure filename is storing properly
+        cv2.imwrite(filename, frame) #writes the frame to an image file
         n+=1
         
     cap.release() #relases the camera function
