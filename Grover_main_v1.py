@@ -43,7 +43,7 @@ while True: 							# starts a perpetual loop any time the vehicle is connected
 			vehicle.mode = VehicleMode('AUTO') 	# put it back in AUTO
 			time.sleep(15) 				# wait for 15 seconds so the vehicle can exit
 	while vehicle.mode==VehicleMode('MANUAL'): 		# if the vehicle is in MANUAL (remotely operated) mode:
-		if rc.channel('6') > 1750 			# if the switch by the H button on the Lightbridge is lowered
+		if rc.channel('6') > 1750: 			# if the switch by the H button on the Lightbridge is lowered
 			vehicle.mode = VehicleMode('HOLD') 	# put the vehicle in HOLD (on a rover, will stop the vehicle)
 			time.sleep(3) 				# wait for the vehicle to come to a stop
 			take_image()
