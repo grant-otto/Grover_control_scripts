@@ -1,0 +1,11 @@
+How to ssh into this Pi:
+
+make sure you are on Eduroam or using a VPN.
+Ensure that the device is on the UD Devices network. It should be on there by default.
+
+In the terminal run:
+
+ssh pi@128.4.213.124
+
+The IP address should not change.
+The password is: team122
