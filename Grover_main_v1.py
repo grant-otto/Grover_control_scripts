@@ -24,41 +24,8 @@ All code is public and free to use.
 
 '''
 
-import time
 from dronekit import *
-'''from dronekit import connect'''
 vehicle = connect('/dev/ttyS0', wait_ready=True, baud=921600)
-<<<<<<< HEAD
-print("Hello, my name is Grover. The current firmware version is: ")
-print vehicle.version
-
-while True: 							# starts a perpetual loop any time the vehicle is connected
-	while vehicle.mode==VehicleMode('AUTO'): 		# if the vehicle is in auto
-		dist=distance_to_current_waypoint()
-		if dist<1 and not dist == None: 		# if the vehicle is less than a meter away from the current WP
-			vehicle.mode = VehicleMode('HOLD') 	# put it on hold (on a rover, will stop the vehicle)
-			time.sleep(3) 				# wait for the vehicle to come to a stop (3 seconds)
-			take_image()
-			vehicle.mode = VehicleMode('AUTO') 	# put it back in AUTO
-			time.sleep(15) 				# wait for 15 seconds so the vehicle can exit
-	while vehicle.mode==VehicleMode('MANUAL'): 		# if the vehicle is in MANUAL (remotely operated) mode:
-		if rc.channel('6') > 1750: 			# if the switch by the H button on the Lightbridge is lowered
-			vehicle.mode = VehicleMode('HOLD') 	# put the vehicle in HOLD (on a rover, will stop the vehicle)
-			time.sleep(3) 				# wait for the vehicle to come to a stop
-			take_image()
-			vehicle.mode = VehicleMode('MANUAL')
-								# ***make sure the switch is immediately put back up after turning down
-
-			
-		
-
-
-
-
-
-
-
-=======
 #print("Hello, my name is Grover. The current firmware version is: ")
 #print vehicle.version
 print 'debug0'
@@ -88,16 +55,15 @@ while vehicle.mode==VehicleMode('AUTO'): 		# if the vehicle is in auto
 while vehicle.mode==VehicleMode('MANUAL'): 		# if the vehicle is in MANUAL (remotely operated) mode:
 	print('debug2')
 	print(vehicle.mode)
-	if rc.channel('6') > 1750 			# if the switch by the H button on the Lightbridge is lowered
+	if rc.channel('6') > 1750: 			# if the switch by the H button on the Lightbridge is lowered
 		vehicle.mode = VehicleMode('HOLD') 	# put the vehicle in HOLD (on a rover, will stop the vehicle)
 		time.sleep(3) 				# wait for the vehicle to come to a stop
 		take_image()
 		vehicle.mode = VehicleMode('MANUAL')
 							# ***make sure the switch is immediately put back up after turning down
-while vehicle.mode==VehicleMode('HOLD')
+while vehicle.mode==VehicleMode('HOLD'):
 	print('holding')
 	time.sleep(1)
->>>>>>> 1d8a390b5a8f138821ce712b09d04a69239c33a7
 
 
 def take_image():
