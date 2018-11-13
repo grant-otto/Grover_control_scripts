@@ -1,5 +1,6 @@
 opencv:
-sudo pip3 install opencv-python
+pip3 install opencv-python
+sudo apt install libqt4-test
 
 os: should be included with the pi
 
