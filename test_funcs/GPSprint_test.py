@@ -36,4 +36,6 @@ print vehicle.mode
 print 'done checks'
 
 print vehicle.gps_0
-print vehicle.location.global_frame
+
+print ('(%s,%s,%s)'% (vehicle.location.global_frame.lat, vehicle.location.global_frame.lon, vehicle.location.global_frame.alt))
+print vehicle.location.global_frame.lat
