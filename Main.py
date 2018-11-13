@@ -3,6 +3,8 @@
 import numpy as np
 import cv2
 import os
+import sys
+from pathlib import Path
 #import pyexiv2
 import datetime
 #from dronekit import connect, VehicleMode
@@ -12,6 +14,7 @@ import datetime
 def main():
     cap = cv2.VideoCapture(0) 							#zero is first webcam attatched
     n = 0
+    filename = ''
     
     if cap.isOpened(): 								#checks if webcam is up and running
         ret, frame = cap.read() 						#capture single frame from the webcam to read
@@ -36,11 +39,12 @@ def main():
         filename = 'GrainImage_%s.png'%datetime.datetime.utcnow().strftime('%Y-%m-%d-%H-%M-%S') #writes filename with UTC date & time
         #path = 'C:/Users/Courtney/Documents/Github/Grover_control_scripts'
         #cv2.imwrite(os.path.join(path, filename), frame)
-        #print(filename) #sanity check to make sure filename is storing properly
+        print(filename) #sanity check to make sure filename is storing properly
         cv2.imwrite(filename, frame) #writes the frame to an image file
-        n+=1
-        
+        #filename+=new_filename
+    
     cap.release() #relases the camera function
+    
 
 if __name__ == "__main__":
     main()
