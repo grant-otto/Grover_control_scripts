@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python3
 
 '''
 Grover: a grain size-measuring rover using Pixhawk 2.0 connected via a serial connecti$
