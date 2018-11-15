@@ -5,7 +5,7 @@ import cv2
 import os
 import sys
 from pathlib import Path
-#import pyexiv2
+import pyexiv2
 import datetime
 #from dronekit import connect, VehicleMode
 #datetime.now().strftime("%m_%d_%Y %H:%M:%S")
@@ -28,11 +28,6 @@ def main():
         pyexiv2 is a module that allows your python scripts to read and write data
             embedded in image files
 	'''
-        #metadata = pyexiv2.ImageMetadata(frame) 				#calls for the metadata off of the image
-        #metadata.read() 							#reads the metadata
-        key = 'Exif.Image.GPSTag' 						#reference for saving the gps data in the exif tag
-        #value = dronekit.LocationGlobal 					#takes the gps data from dronekit
-        #metadata[key] = pyexiv2.ExifTag(key, value) 				#writes the key and value to the exif tag
         #%m_%d_%Y - month_day_year
         #filename = "GrainImage_.png" #+ str(now) + ".png"
         filename = 'GrainImage_%s.png'%datetime.datetime.utcnow().strftime('%Y-%m-%d-%H-%M-%S') #writes filename with UTC date & time
@@ -41,6 +36,11 @@ def main():
         print(filename) #sanity check to make sure filename is storing properly
         cv2.imwrite(filename, frame) #writes the frame to an image file
         #filename+=new_filename
+        metadata = pyexiv2.ImageMetadata(filename) 				#calls for the metadata off of the image
+        metadata.read() 							#reads the metadata
+        key = 'Exif.Image.GPSTag' 						#reference for saving the gps data in the exif tag
+        value = dronekit.LocationGlobal 					#takes the gps data from dronekit
+        metadata[key] = pyexiv2.ExifTag(key, value) 				#writes the key and value to the exif tag
     
     cap.release() #relases the camera function
     
