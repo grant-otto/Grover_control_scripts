@@ -13,7 +13,6 @@ import datetime
 
 def main():
     cap = cv2.VideoCapture(0) 							#zero is first webcam attatched
-    n = 0
     filename = ''
     
     if cap.isOpened(): 								#checks if webcam is up and running
@@ -48,3 +47,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    main_2()
