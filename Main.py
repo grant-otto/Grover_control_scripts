@@ -39,7 +39,7 @@ def main():
         metadata = pyexiv2.ImageMetadata(filename) 				#calls for the metadata off of the image
         metadata.read() 							#reads the metadata
         key = 'Exif.Image.GPSTag' 						#reference for saving the gps data in the exif tag
-        value = dronekit.LocationGlobal 					#takes the gps data from dronekit
+        value = '00.01.19' 					#takes the gps data from dronekit
         metadata[key] = pyexiv2.ExifTag(key, value) 				#writes the key and value to the exif tag
     
     cap.release() #relases the camera function
