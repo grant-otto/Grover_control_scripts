@@ -9,3 +9,4 @@ ssh pi@128.4.213.124
 
 The IP address should not change.
 The password is: team122
+hello
