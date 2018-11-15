@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 import pyexiv2
 import datetime
+from dronekit import *
 #from dronekit import connect, VehicleMode
 #datetime.now().strftime("%m_%d_%Y %H:%M:%S")
 
@@ -39,7 +40,7 @@ def main():
         metadata = pyexiv2.ImageMetadata(filename) 				#calls for the metadata off of the image
         metadata.read() 							#reads the metadata
         key = 'Exif.Image.GPSTag' 						#reference for saving the gps data in the exif tag
-        value = 00.01.19 					#takes the gps data from dronekit
+        value = vehicle.location.global_frame 					#takes the gps data from dronekit
         metadata[key] = pyexiv2.ExifTag(key, value) 				#writes the key and value to the exif tag
     
     cap.release() #relases the camera function
