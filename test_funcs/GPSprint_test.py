@@ -29,18 +29,18 @@ from dronekit import *
 '''from dronekit import connect'''
 vehicle = connect('/dev/ttyS0', wait_ready=True, baud=921600)
 print("Hello, my name is Grover. The current firmware version is: ")
-print vehicle.version
-print vehicle.system_status.state
-print vehicle.armed
-print vehicle.mode
-print 'done checks'
+print (vehicle.version)
+print (vehicle.system_status.state)
+print (vehicle.armed)
+print (vehicle.mode)
+print ('done checks')
 
-print vehicle.gps_0 #vehicle gps status
+print (vehicle.gps_0) #vehicle gps status
 
 
 #this is what you need:
 
 print ('(%s,%s,%s)'% (vehicle.location.global_frame.lat, vehicle.location.global_frame.lon, vehicle.location.global_frame.alt))
-print vehicle.location.global_frame.lat
+print (vehicle.location.global_frame.lat)
 
 
