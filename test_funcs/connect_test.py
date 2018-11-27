@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python3
 
 '''
 Grover: a grain size-measuring rover using Pixhawk 2.0 connected via a serial connecti$
@@ -29,11 +29,11 @@ from dronekit import *
 '''from dronekit import connect'''
 vehicle = connect('/dev/ttyS0', wait_ready=True, baud=921600)
 print("Hello, my name is Grover. The current firmware version is: ")
-print vehicle.version
-print vehicle.system_status.state
-print vehicle.armed
-print vehicle.mode
-print 'done checks'
+print (vehicle.version)
+print (vehicle.system_status.state)
+print (vehicle.armed)
+print (vehicle.mode)
+print ('done checks')
 
 while vehicle.mode==VehicleMode('MANUAL'):
 	print('vehicle in manual')
