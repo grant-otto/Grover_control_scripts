@@ -27,7 +27,7 @@ All code is public and free to use.
 import time
 from dronekit import *
 '''from dronekit import connect'''
-vehicle = connect('/dev/ttyS0', wait_ready=True, baud=921600)
+vehicle = connect('/dev/ttyS0', wait_ready=False, baud=921600)
 print("Hello, my name is Grover. The current firmware version is: ")
 print (vehicle.version)
 print (vehicle.system_status.state)
