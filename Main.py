@@ -46,7 +46,7 @@ def main():
 		lat = (vehicle.location.global_frame.lat)
 		lon = (vehicle.location.global_frame.lon)
 		alt = (vehicle.location.global_frame.alt)
-		value = '(lat, lon, alt)' #takes the gps data from dronekit
+		value = '(%s, %s, %s)' %(lat,lon,alt) #takes the gps data from dronekit
 		metadata[key] = pyexiv2.ExifTag(key, value) #writes the key and value to the exif tag
 		metadata.write()
 
