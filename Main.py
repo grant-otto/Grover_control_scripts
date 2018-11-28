@@ -8,7 +8,7 @@ from pathlib import Path
 import pyexiv2
 import datetime
 from dronekit import *
-vehicle = connect('/dev/ttyS0', wait_ready=True, baud=921600)
+vehicle = connect('/dev/ttyS0', wait_ready=False, baud=921600)
 #from dronekit import connect, VehicleMode
 #datetime.now().strftime("%m_%d_%Y %H:%M:%S")
 
