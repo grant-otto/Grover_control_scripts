@@ -41,6 +41,7 @@ print (vehicle.gps_0) #vehicle gps status
 #this is what you need:
 
 print ('(%s,%s,%s)'% (vehicle.location.global_frame.lat, vehicle.location.global_frame.lon, vehicle.location.global_frame.alt))
+print(int(vehicle.location.global_frame.alt))
 print (vehicle.location.global_frame.lat)
 
 
