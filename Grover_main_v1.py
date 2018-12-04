@@ -42,7 +42,9 @@ while vehicle.mode==VehicleMode('AUTO'): 		# if the vehicle is in auto
 	dist=distance_to_current_waypoint()
 	while dist>1 and not dist == None:
 		print('travelling to next waypoint...')
-		time.sleep(1)	
+		print('distance to next waypoint: %f', dist)
+		time.sleep(1)
+		dist=distance_to_current_waypoint()	
 	if dist<1 and not dist == None: 		# if the vehicle is less than a meter away from the current WP
 		vehicle.mode = VehicleMode('HOLD') 	# put it on hold (on a rover, will stop the vehicle)
 		time.sleep(3) 				# wait for the vehicle to come to a stop (3 seconds)
