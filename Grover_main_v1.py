@@ -25,7 +25,7 @@ All code is public and free to use.
 '''
 
 from dronekit import *
-vehicle = connect('/dev/ttyS0', wait_ready=True, baud=921600)
+vehicle = connect('/dev/ttyS0', wait_ready=False, baud=921600)
 #print("Hello, my name is Grover. The current firmware version is: ")
 #print vehicle.version
 print 'debug0'
