@@ -57,7 +57,7 @@ while vehicle.mode==VehicleMode('AUTO'): 		# if the vehicle is in auto
 while vehicle.mode==VehicleMode('MANUAL'): 		# if the vehicle is in MANUAL (remotely operated) mode:
 	print('debug2')
 	print(vehicle.mode)
-	if rc.channel('6') > 1750: 			# if the switch by the H button on the Lightbridge is lowered
+	if vehicle.channels['6'] > 1750: 			# if the switch by the H button on the Lightbridge is lowered
 		vehicle.mode = VehicleMode('HOLD') 	# put the vehicle in HOLD (on a rover, will stop the vehicle)
 		time.sleep(3) 				# wait for the vehicle to come to a stop
 		take_image()
