@@ -25,7 +25,7 @@ All code is public and free to use.
 '''
 
 from dronekit import *
-vehicle = connect('/dev/ttyS0', wait_ready=True, baud=921600)
+vehicle = connect('/dev/ttyS0', wait_ready=False, baud=921600)
 #print("Hello, my name is Grover. The current firmware version is: ")
 #print vehicle.version
 print 'debug0'
@@ -47,7 +47,7 @@ while True: 							# starts a perpetual loop any time the vehicle is connected
 		if dist<1 and not dist == None: 		# if the vehicle is less than a meter away from the current WP
 			vehicle.mode = VehicleMode('HOLD') 	# put it on hold (on a rover, will stop the vehicle)
 			time.sleep(3) 				# wait for the vehicle to come to a stop (3 seconds)
-			take_image()
+			#take_image()
 			vehicle.mode = VehicleMode('AUTO') 	# put it back in AUTO
 			time.sleep(15) 				# wait for 15 seconds so the vehicle can exit
 		elif dist==None:
