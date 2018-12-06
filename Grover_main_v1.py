@@ -35,6 +35,50 @@ print vehicle.mode
 print 'done checks'
 
 
+def take_image():
+	'''
+	controls the stepper motor going down, the image being taken,
+	and the stepper coming back up
+	'''
+	print('take image')
+
+	'''
+	from whiteboard code:
+	while switch = LOW
+                lower stepper
+        stop stepper
+        retrieve gps point
+        take usb image
+        modify exif tag to include gps point
+        save to directory
+        raise stepper #may need a switch for the top of the stepper
+
+	'''
+
+
+def distance_to_current_waypoint():
+    """
+    Gets distance in metres to the current waypoint. 
+    It returns None for the first waypoint (Home location).
+    """
+    nextwaypoint = vehicle.commands.next
+    if nextwaypoint==0:
+        return None
+    missionitem=vehicle.commands[nextwaypoint-1] #commands are zero indexed
+    lat = missionitem.x
+    lon = missionitem.y
+    alt = missionitem.z
+    targetWaypointLocation = LocationGlobalRelative(lat,lon,alt)
+    distancetopoint = get_distance_metres(vehicle.location.global_frame, targetWaypointLocation)
+    return distancetopoint
+
+distancetopoint=distance_to_current_waypoint()
+print(distancetopoint)
+
+
+
+
+
 while True: 							# starts a perpetual loop any time the vehicle is connected
 	while vehicle.mode==VehicleMode('AUTO'): 	# if the vehicle is in auto
 		print('AUTO')	
@@ -67,48 +111,6 @@ while True: 							# starts a perpetual loop any time the vehicle is connected
 		time.sleep(1)
 
 
-def take_image():
-	'''
-	controls the stepper motor going down, the image being taken,
-	and the stepper coming back up
-	'''
 
-
-	'''
-	from whiteboard code:
-	while switch = LOW
-                lower stepper
-        stop stepper
-        retrieve gps point
-        take usb image
-        modify exif tag to include gps point
-        save to directory
-        raise stepper #may need a switch for the top of the stepper
-
-	'''
-
-
-
-
-
-
-def distance_to_current_waypoint():
-    """
-    Gets distance in metres to the current waypoint. 
-    It returns None for the first waypoint (Home location).
-    """
-    nextwaypoint = vehicle.commands.next
-    if nextwaypoint==0:
-        return None
-    missionitem=vehicle.commands[nextwaypoint-1] #commands are zero indexed
-    lat = missionitem.x
-    lon = missionitem.y
-    alt = missionitem.z
-    targetWaypointLocation = LocationGlobalRelative(lat,lon,alt)
-    distancetopoint = get_distance_metres(vehicle.location.global_frame, targetWaypointLocation)
-    return distancetopoint
-
-distancetopoint=distance_to_current_waypoint()
-print(distancetopoint)
 
 
