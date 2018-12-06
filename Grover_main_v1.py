@@ -34,37 +34,6 @@ print vehicle.mode
 print 'done checks'
 
 
-while True: 							# starts a perpetual loop any time the vehicle is connected
-	while vehicle.mode==VehicleMode('AUTO'): 	# if the vehicle is in auto
-		print('AUTO')	
-		dist=distance_to_current_waypoint()
-		while dist>1 and not dist == None:
-			print('travelling to next waypoint...')
-			print('distance to next waypoint: %f', dist)
-			time.sleep(1)
-			dist=distance_to_current_waypoint()	
-		if dist<1 and not dist == None: 		# if the vehicle is less than a meter away from the current WP
-			vehicle.mode = VehicleMode('HOLD') 	# put it on hold (on a rover, will stop the vehicle)
-			time.sleep(3) 				# wait for the vehicle to come to a stop (3 seconds)
-			take_image()
-			vehicle.mode = VehicleMode('AUTO') 	# put it back in AUTO
-			time.sleep(15) 				# wait for 15 seconds so the vehicle can exit
-		elif dist==None:
-			print('At Home')
-			time.sleep(1)
-	while vehicle.mode==VehicleMode('MANUAL'): 		# if the vehicle is in MANUAL (remotely operated) mode:
-		#print('MANUAL')
-		if vehicle.channels['6'] > 1750: 			# if the switch by the H button on the Lightbridge is lowered
-			vehicle.mode = VehicleMode('HOLD') 	# put the vehicle in HOLD (on a rover, will stop the vehicle)
-			time.sleep(3) 				# wait for the vehicle to come to a stop
-			take_image()
-			vehicle.mode = VehicleMode('MANUAL')
-								# ***make sure the switch is immediately put back up after turning down
-	while vehicle.mode==VehicleMode('HOLD'):
-		print('holding')
-		time.sleep(1)
-
-
 def take_image():
 	'''
 	controls the stepper motor going down, the image being taken,
@@ -86,10 +55,6 @@ def take_image():
 	'''
 
 
-
-
-
-
 def distance_to_current_waypoint():
     """
     Gets distance in metres to the current waypoint. 
@@ -108,5 +73,43 @@ def distance_to_current_waypoint():
 
 distancetopoint=distance_to_current_waypoint()
 print(distancetopoint)
+
+
+
+
+
+while True: 							# starts a perpetual loop any time the vehicle is connected
+	while vehicle.mode==VehicleMode('AUTO'): 	# if the vehicle is in auto
+		print('AUTO')	
+		dist=distance_to_current_waypoint()
+		while dist>1 and not dist == None:
+			print('travelling to next waypoint...')
+			print('distance to next waypoint: %f', dist)
+			time.sleep(1)
+			dist=distance_to_current_waypoint()	
+		if dist<1 and not dist == None: 		# if the vehicle is less than a meter away from the current WP
+			vehicle.mode = VehicleMode('HOLD') 	# put it on hold (on a rover, will stop the vehicle)
+			time.sleep(3) 				# wait for the vehicle to come to a stop (3 seconds)
+			#take_image()
+			vehicle.mode = VehicleMode('AUTO') 	# put it back in AUTO
+			time.sleep(15) 				# wait for 15 seconds so the vehicle can exit
+		elif dist==None:
+			print('At Home')
+			time.sleep(1)
+	while vehicle.mode==VehicleMode('MANUAL'): 		# if the vehicle is in MANUAL (remotely operated) mode:
+		print('MANUAL')
+		'''
+		if vehicle.channels['6'] > 1750: 			# if the switch by the H button on the Lightbridge is lowered
+			vehicle.mode = VehicleMode('HOLD') 	# put the vehicle in HOLD (on a rover, will stop the vehicle)
+			time.sleep(3) 				# wait for the vehicle to come to a stop
+			take_image()
+			vehicle.mode = VehicleMode('MANUAL')'''
+								# ***make sure the switch is immediately put back up after turning down
+	while vehicle.mode==VehicleMode('HOLD'):
+		print('holding')
+		time.sleep(1)
+
+
+
 
 
