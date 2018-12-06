@@ -5,6 +5,7 @@ import cv2
 import os
 import sys
 from pathlib import Path
+import os.path
 import pyexiv2
 import datetime
 from dronekit import *
@@ -32,18 +33,18 @@ def image_cap():
 		'''
 		#%m_%d_%Y - month_day_year
 		#filename = "GrainImage_.png" #+ str(now) + ".png"
-        date=datetime.datetime.utcnow().strftime('%Y-%m-%d-%H-%M-%S')
+		date=datetime.datetime.utcnow().strftime('%Y-%m-%d-%H-%M-%S')
 		filename = 'GrainImage_%s.png'%date #writes filename with UTC date & time
 		#date=datetime.datetime.utcnow().strftime('%Y-%m-%d-%H-%M-%S')
-        path = '/home/pi/Grain_images/'+date
+		path = "/home/pi/Grain_images/"
 		cv2.imwrite(os.path.join(path, filename), frame)
 		print(filename) #sanity check to make sure filename is storing properly
 		#cv2.imwrite(filename, frame) #writes the frame to an image file
 		#filename+=new_filename
-		metadata = pyexiv2.ImageMetadata(filename) #calls for the metadata off of the image
+		metadata = pyexiv2.ImageMetadata('/home/pi/Grain_images/'+filename) #calls for the metadata off of the image
 		metadata.read() #reads the metadata
 		metadata.modified = True
-		metadata.writable = os.access(filename, os.W_OK)
+		metadata.writable = os.access('/home/pi/Grainimages/'+filename, os.W_OK)
 		key = 'Exif.Image.ImageDescription' #reference for saving the gps data in the exif tag
 		lat = (vehicle.location.global_frame.lat)
 		lon = (vehicle.location.global_frame.lon)
