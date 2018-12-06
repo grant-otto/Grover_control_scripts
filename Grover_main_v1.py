@@ -71,7 +71,8 @@ def distance_to_current_waypoint():
     return distancetopoint
 
 distancetopoint=distance_to_current_waypoint()
-print(distancetopoint)
+print('distance to waypoint: ', distancetopoint)
+
 
 
 
