@@ -26,9 +26,8 @@ All code is public and free to use.
 
 from dronekit import *
 vehicle = connect('/dev/ttyS0', wait_ready=False, baud=921600)
-#print("Hello, my name is Grover. The current firmware version is: ")
-#print vehicle.version
-print 'debug0'
+print("Hello, my name is Grover. The current firmware version is: ")
+print vehicle.version
 print vehicle.system_status.state
 print vehicle.armed
 print vehicle.mode
@@ -47,20 +46,19 @@ while True: 							# starts a perpetual loop any time the vehicle is connected
 		if dist<1 and not dist == None: 		# if the vehicle is less than a meter away from the current WP
 			vehicle.mode = VehicleMode('HOLD') 	# put it on hold (on a rover, will stop the vehicle)
 			time.sleep(3) 				# wait for the vehicle to come to a stop (3 seconds)
-			#take_image()
+			take_image()
 			vehicle.mode = VehicleMode('AUTO') 	# put it back in AUTO
 			time.sleep(15) 				# wait for 15 seconds so the vehicle can exit
 		elif dist==None:
 			print('At Home')
 			time.sleep(1)
 	while vehicle.mode==VehicleMode('MANUAL'): 		# if the vehicle is in MANUAL (remotely operated) mode:
-		print('MANUAL')
-		'''
+		#print('MANUAL')
 		if vehicle.channels['6'] > 1750: 			# if the switch by the H button on the Lightbridge is lowered
 			vehicle.mode = VehicleMode('HOLD') 	# put the vehicle in HOLD (on a rover, will stop the vehicle)
 			time.sleep(3) 				# wait for the vehicle to come to a stop
 			take_image()
-			vehicle.mode = VehicleMode('MANUAL')'''
+			vehicle.mode = VehicleMode('MANUAL')
 								# ***make sure the switch is immediately put back up after turning down
 	while vehicle.mode==VehicleMode('HOLD'):
 		print('holding')
@@ -72,7 +70,7 @@ def take_image():
 	controls the stepper motor going down, the image being taken,
 	and the stepper coming back up
 	'''
-
+	print('take image')
 
 	'''
 	from whiteboard code:
