@@ -1,5 +1,4 @@
 #! /usr/bin/python
-
 '''
 Grover: a grain size-measuring rover using Pixhawk 2.0 connected via a serial connecti$
 
@@ -27,11 +26,11 @@ All code is public and free to use.
 from dronekit import *
 vehicle = connect('/dev/ttyS0', wait_ready=False, baud=921600)
 print("Hello, my name is Grover. The current firmware version is: ")
-print vehicle.version
-print vehicle.system_status.state
-print vehicle.armed
-print vehicle.mode
-print 'done checks'
+print(vehicle.version)
+print(vehicle.system_status.state)
+print(vehicle.armed)
+print(vehicle.mode)
+print('done checks')
 
 
 def take_image():
@@ -97,13 +96,13 @@ while True: 							# starts a perpetual loop any time the vehicle is connected
 			print('At Home')
 			time.sleep(1)
 	while vehicle.mode==VehicleMode('MANUAL'): 		# if the vehicle is in MANUAL (remotely operated) mode:
-		print('MANUAL')
-		'''
-		if vehicle.channels['6'] > 1750: 			# if the switch by the H button on the Lightbridge is lowered
-			vehicle.mode = VehicleMode('HOLD') 	# put the vehicle in HOLD (on a rover, will stop the vehicle)
-			time.sleep(3) 				# wait for the vehicle to come to a stop
-			take_image()
-			vehicle.mode = VehicleMode('MANUAL')'''
+		#print('MANUAL')
+		
+		if vehicle.channels['5'] < 1750: 			# if the switch by the H button on the Lightbridge is lowered
+			#vehicle.mode = VehicleMode('HOLD') 	# put the vehicle in HOLD (on a rover, will stop the vehicle)
+			#time.sleep(3) 				# wait for the vehicle to come to a stop
+			print('take image')
+			#vehicle.mode = VehicleMode('MANUAL')
 								# ***make sure the switch is immediately put back up after turning down
 	while vehicle.mode==VehicleMode('HOLD'):
 		print('holding')

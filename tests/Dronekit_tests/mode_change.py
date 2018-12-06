@@ -23,4 +23,6 @@ print vehicle.version
 
 
 vehicle.mode=VehicleMode('HOLD')
-vehicle.mode=VehicleMode('AUTO')
+print(vehicle.mode)
+vehicle.mode=VehicleMode('MANUAL')
+print(vehicle.mode)
