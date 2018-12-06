@@ -32,11 +32,13 @@ def image_cap():
 		'''
 		#%m_%d_%Y - month_day_year
 		#filename = "GrainImage_.png" #+ str(now) + ".png"
-		filename = 'GrainImage_%s.png'%datetime.datetime.utcnow().strftime('%Y-%m-%d-%H-%M-%S') #writes filename with UTC date & time
-		#path = 'C:/Users/Courtney/Documents/Github/Grover_control_scripts'
-		#cv2.imwrite(os.path.join(path, filename), frame)
+        date=datetime.datetime.utcnow().strftime('%Y-%m-%d-%H-%M-%S')
+		filename = 'GrainImage_%s.png'%date #writes filename with UTC date & time
+		#date=datetime.datetime.utcnow().strftime('%Y-%m-%d-%H-%M-%S')
+        path = '/home/pi/Grain_images/'+date
+		cv2.imwrite(os.path.join(path, filename), frame)
 		print(filename) #sanity check to make sure filename is storing properly
-		cv2.imwrite(filename, frame) #writes the frame to an image file
+		#cv2.imwrite(filename, frame) #writes the frame to an image file
 		#filename+=new_filename
 		metadata = pyexiv2.ImageMetadata(filename) #calls for the metadata off of the image
 		metadata.read() #reads the metadata
