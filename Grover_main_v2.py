@@ -54,10 +54,10 @@ pwm.start(0)
 vehicle = connect('/dev/ttyS0', wait_ready=False, baud=921600)
 #print("Hello, my name is Grover. The current firmware version is: ")
 #print vehicle.version
-print vehicle.system_status.state
-print vehicle.armed
-print vehicle.mode
-print 'done checks'
+print(vehicle.system_status.state)
+print(vehicle.armed)
+print(vehicle.mode)
+print('done checks')
 
 
 def image_save():	
