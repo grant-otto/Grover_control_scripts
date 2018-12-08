@@ -40,7 +40,7 @@ def take_image():
 	and the stepper coming back up
 	'''
 	print('take image')
-    image_save()
+        image_save()
 	'''
 	from whiteboard code:
 	while switch = LOW
@@ -54,7 +54,7 @@ def take_image():
 
 	'''
 def image_save():
-    subprocess.call("./home/pi/Grover_control_scripts/tests/ImageCapture_tests/image_cap.py")
+    subprocess.call("python3 /home/pi/Grover_control_scripts/tests/ImageCapture_tests/image_cap.py")
 
 def distance_to_current_waypoint():
     """
