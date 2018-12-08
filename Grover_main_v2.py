@@ -240,19 +240,6 @@ def take_image():
 	and the stepper coming back up.
 	'''
 	#######
-
-	'''
-	from whiteboard code:
-	while switch = LOW
-                lower stepper
-        stop stepper
-        retrieve gps point
-        take usb image
-        modify exif tag to include gps point
-        save to directory
-        raise stepper #may need a switch for the top of the stepper
-
-	'''
 	cycles = stepperdown()
 	image_save()
 	stepperup(cycles)
