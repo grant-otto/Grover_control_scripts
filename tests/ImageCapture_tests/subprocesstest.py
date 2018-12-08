@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 import subprocess
-
-subprocess.call('python3 /home/pi/Grover_control_scripts/tests/ImageCapture_tests/image_cap.py')
+import os
+os.system("python3 image_cap.py")

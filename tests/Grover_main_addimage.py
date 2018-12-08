@@ -24,7 +24,7 @@ All code is public and free to use.
 '''
 
 from dronekit import *
-import subprocess
+import os
 vehicle = connect('/dev/ttyS0', wait_ready=False, baud=921600)
 print("Hello, my name is Grover. The current firmware version is: ")
 print(vehicle.version)
@@ -54,7 +54,8 @@ def take_image():
 
 	'''
 def image_save():
-    subprocess.call("python3 /home/pi/Grover_control_scripts/tests/ImageCapture_tests/image_cap.py")
+    os.system("python3 /home/pi/Grover_control_scripts/tests/ImageCapture_tests/image_cap.py &")
+    time.sleep(15)
 
 def distance_to_current_waypoint():
     """
