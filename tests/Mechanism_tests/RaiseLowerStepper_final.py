@@ -1,3 +1,6 @@
+#! /usr/bin/python
+
+
 '''
 Test script for final version of stepper raising and lowering that is implemented in Grover_main_v2.py
 '''
