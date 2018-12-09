@@ -33,8 +33,8 @@ import numpy as np
 import cv2
 import os
 import sys
-from pathlib import Path
-import pyexiv2
+#from pathlib import Path
+#import pyexiv2
 import datetime
 from dronekit import *
 import time
@@ -67,23 +67,23 @@ print('done checks')
 
 
 def image_save():	
-	#######
-	'''
-	Executes a python3 script that will capture the image.
-	This script captures and saves an image using the usb camera (microscope).
-	It saves it to a datestamped filename, and adds the GPS information as text to the exif tag.
-	'''
-	#######	
-	os.system("python3 /home/pi/Grover_control_scripts/tests/ImageCapture_tests/image_cap.py &")
+    #######
+    '''
+    Executes a python3 script that will capture the image.
+    This script captures and saves an image using the usb camera (microscope).
+    It saves it to a datestamped filename, and adds the GPS information as text to the exif tag.
+    '''
+    #######	
+    os.system("python3 /home/pi/Grover_control_scripts/tests/ImageCapture_tests/image_cap.py &")
     time.sleep(15)
 def distance_to_current_waypoint():
     #######
-	"""
+    """
     Gets distance in metres to the current waypoint. 
     It returns None for the first waypoint (Home location).
     """
-	#######
-	nextwaypoint = vehicle.commands.next
+    #######
+    nextwaypoint = vehicle.commands.next
     if nextwaypoint==0:
         return None
     missionitem=vehicle.commands[nextwaypoint-1]									# commands are zero indexed
@@ -168,13 +168,13 @@ def stepperup(cycles):
             time.sleep(0.001)
 
 def SetAngle(ang):
-	#######
-	'''necessary for servo to work correctly'''
-	#######
+    #######
+    '''necessary for servo to work correctly'''
+    #######
     duty = ang/18 + 2
     GPIO.output(40,True)
     pwm.ChangeDutyCycle(duty)
-    sleep(1)
+    time.sleep(1)
     GPIO.output(40,False)
     pwm.ChangeDutyCycle(0)
 
@@ -188,16 +188,16 @@ def wipe():
         SetAngle(30)
 
 def take_image():
-	#######
-	'''
-	This is the master function for taking an image. It controls the stepper motor going down, the image being taken,
-	and the stepper coming back up.
-	'''
-	#######
-	cycles = stepperdown()
-	image_save()
-	stepperup(cycles)
-	wipe()
+    #######
+    '''
+    This is the master function for taking an image. It controls the stepper motor going down, the image being taken,
+    and the stepper coming back up.
+    '''
+    #######
+    cycles = stepperdown()
+    image_save()
+    stepperup(cycles)
+    wipe()
 
 #######
 ''' MAIN LOOP '''

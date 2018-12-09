@@ -32,4 +32,5 @@ def wipe():
     for i in range(5):
         SetAngle(180)
         SetAngle(30)
-wipe()
+#wipe()
+SetAngle(0)
