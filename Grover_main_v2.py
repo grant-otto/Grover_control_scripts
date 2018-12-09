@@ -91,9 +91,10 @@ def distance_to_current_waypoint():
 distancetopoint=distance_to_current_waypoint()
 print(distancetopoint)
 
-
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BOARD)
+#######
+'''Initialize GPIO for switch'''
+#######
+#GPIO.setwarnings(False)
 switchpin=33
 GPIO.setup(switchpin, GPIO.IN,pull_up_down=GPIO.PUD_UP)
 
@@ -180,23 +181,13 @@ def SetAngle(ang):
     pwm.ChangeDutyCycle(0)
 
 
-def wipe()
-	#######
-	''' this function controls the servo to wipe the lens 5 times'''
-	#######
-    SetAngle(30)
-    SetAngle(180)
-    SetAngle(30)
-    SetAngle(180)
-    SetAngle(30)
-    SetAngle(180)
-    SetAngle(30)
-    SetAngle(180
-    SetAngle(30)
-    SetAngle(180)
-    SetAngle(30)
-    SetAngle(180)
-    SetAngle(30)
+def wipe():
+    #######
+    ''' this function controls the servo to wipe the lens 5 times'''
+    ######
+    for i in range(5):
+        SetAngle(180)
+        SetAngle(30)
 
 def take_image():
 	#######
