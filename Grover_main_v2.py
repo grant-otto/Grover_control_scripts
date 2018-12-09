@@ -94,7 +94,7 @@ print(distancetopoint)
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
-switchpin=18
+switchpin=33
 GPIO.setup(switchpin, GPIO.IN,pull_up_down=GPIO.PUD_UP)
 
 def stepperdown():
