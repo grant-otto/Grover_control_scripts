@@ -184,8 +184,8 @@ def wipe():
     ''' this function controls the servo to wipe the lens 5 times'''
     ######
     for i in range(5):
-        SetAngle(180)
         SetAngle(30)
+        SetAngle(180)
 
 def take_image():
     #######
