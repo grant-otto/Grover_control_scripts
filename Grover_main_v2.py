@@ -40,7 +40,7 @@ from dronekit import *
 import time
 
 #######
-'''initialize gpio for stepper, steering servo'''
+'''initialize gpio for stepper, wiping servo'''
 #######
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(40,GPIO.OUT) #Pin 40 is the GPIO out, can be easily changed
