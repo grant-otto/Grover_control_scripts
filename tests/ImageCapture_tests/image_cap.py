@@ -30,13 +30,13 @@ def image_cap():
 		'''
 		date = datetime.datetime.utcnow().strftime('%Y-%m-%d-%H-%M-%S') #sets date to be current date/time in UTC
 		filename = 'GrainImage_%s.png'%date #writes filename with UTC date & time
-		path = "/home/pi/Grain_images/" # path file name to save to new directory on pi
+		path = "/home/pi/Grover_control_scripts/" # path file name to save to new directory on pi
 		cv2.imwrite(os.path.join(path, filename), frame) #writes the frame to the designated path with the desired filename
 		#print(filename) #sanity check to make sure filename is storing properly
-		metadata = pyexiv2.ImageMetadata('/home/pi/Grain_images/'+filename) #calls for the metadata off of the image
+		metadata = pyexiv2.ImageMetadata('/home/pi/Grover_control_scripts/'+filename) #calls for the metadata off of the image
 		metadata.read() #reads the metadata
 		metadata.modified = True #checks to see if the metadata can be modified
-		metadata.writable = os.access('/home/pi/Grainimages/'+filename, os.W_OK) #makes sure the file in the defined path is readable for metadata
+		metadata.writable = os.access('/home/pi/Grover_control_scripts/'+filename, os.W_OK) #makes sure the file in the defined path is readable for metadata
 		key = 'Exif.Image.ImageDescription' #reference for saving the gps data in the exif tag
 		lat = (vehicle.location.global_frame.lat) #sets lat to be the rover's latitude from dronekit
 		lon = (vehicle.location.global_frame.lon) #sets Lon to be the rover's Longitude from dronekit
