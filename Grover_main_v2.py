@@ -156,7 +156,7 @@ def stepperup(cycles):
         [0,0,0,1],
         [1,0,0,1]]
 
-    for i in range(cycles+1):
+    for i in range(cycles+75):
         #Go through the sequence once. 1 rev = 8 cycles, gear reduction = 1/64, (8)(64) = 512 cycles
         #One revolution is 512 cycles = default
         for halfstep in range(8):
